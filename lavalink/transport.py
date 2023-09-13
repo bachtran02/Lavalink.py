@@ -332,6 +332,10 @@ class Transport:
             if res.status == 401 or res.status == 403:
                 raise AuthenticationError
 
+            # /loadsearch endpoint raises 404 if no result
+            if res.status == 404:
+                return None
+
             if res.status == 200:
                 json = await res.json()
                 return json if to is None else to.from_dict(json)
