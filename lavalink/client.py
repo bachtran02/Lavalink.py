@@ -253,7 +253,7 @@ class Client:
         node = node or random.choice(self.node_manager.nodes)
         return await node.get_tracks(query)
     
-    async def search_tracks(self, query: str, types: str = 'track,album,artist,playlist,text', node: Node = None) -> LavasearchResult:
+    async def search_tracks(self, query: str, types: str = 'track', node: Node = None) -> LavasearchResult:
 
         node = node or random.choice(self.node_manager.nodes)
         return await node.search_tracks(query=query, types=types)
