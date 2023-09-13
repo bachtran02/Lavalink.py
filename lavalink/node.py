@@ -126,7 +126,7 @@ class Node:
         """
         return await self._transport._request('GET', '/loadtracks', params={'identifier': query}, to=LoadResult)
     
-    async def search_tracks(self, query: str, types: str = 'track,album,artist,playlist,text'):
+    async def search_tracks(self, query: str, types: str):
         return await self._transport._request('GET', '/loadsearch', params={'query': query, 'types': types}, to=LavasearchResult)
 
     async def decode_track(self, track: str) -> AudioTrack:

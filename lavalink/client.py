@@ -37,7 +37,7 @@ from .node import Node
 from .nodemanager import NodeManager
 from .player import DefaultPlayer
 from .playermanager import PlayerManager
-from .server import AudioTrack, LoadResult
+from .server import AudioTrack, LoadResult, LavasearchResult
 
 _log = logging.getLogger(__name__)
 
@@ -252,6 +252,11 @@ class Client:
 
         node = node or random.choice(self.node_manager.nodes)
         return await node.get_tracks(query)
+    
+    async def search_tracks(self, query: str, types: str = 'track,album,artist,playlist,text', node: Node = None) -> LavasearchResult:
+
+        node = node or random.choice(self.node_manager.nodes)
+        return await node.search_tracks(query=query, types=types)
 
     async def decode_track(self, track: str, node: Node = None) -> AudioTrack:
         """|coro|
