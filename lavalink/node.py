@@ -25,7 +25,7 @@ from typing import TYPE_CHECKING, Any, Dict, List, Optional, Union
 
 from .abc import BasePlayer, Filter
 from .errors import ClientError, RequestError
-from .server import AudioTrack, LoadResult
+from .server import AudioTrack, LoadResult, LavasearchResult
 from .stats import Stats
 from .transport import Transport
 
@@ -125,6 +125,9 @@ class Node:
         :class:`LoadResult`
         """
         return await self._transport._request('GET', '/loadtracks', params={'identifier': query}, to=LoadResult)
+    
+    async def search_tracks(self, query: str, types: str = 'track,album,artist,playlist,text'):
+        return await self._transport._request('GET', '/loadsearch', params={'query': query, 'types': types}, to=LavasearchResult)
 
     async def decode_track(self, track: str) -> AudioTrack:
         """|coro|
