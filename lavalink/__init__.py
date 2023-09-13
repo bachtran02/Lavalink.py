@@ -25,7 +25,7 @@ from .node import Node
 from .nodemanager import NodeManager
 from .player import DefaultPlayer
 from .playermanager import PlayerManager
-from .server import AudioTrack, LoadResult, LavasearchResult, LoadType, PlaylistInfo, Plugin
+from .server import AudioTrack, LoadResult, LoadType, PlaylistInfo, Plugin
 from .stats import Penalty, Stats
 from .utils import (decode_track, encode_track, format_time, parse_time,
                     timestamp_to_millis)

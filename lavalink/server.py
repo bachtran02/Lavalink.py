@@ -269,22 +269,6 @@ class LoadResult:
     def __repr__(self):
         return '<LoadResult load_type={0.load_type} playlist_info={0.playlist_info} tracks=[{1} item(s)]>'.format(self, len(self.tracks))
 
-class LavasearchResult:
-
-    def __init__(self, tracks: List = [], albums: List = [], artists: List = [],
-                playlists: List = [], texts: List = [], plugin = None):
-        self.tracks = tracks
-        self.albums = albums
-        self.artists = artists
-        self.playlists = playlists
-        self.texts = texts
-        self.plugin = plugin
-
-    @classmethod
-    def from_dict(cls, mapping: dict):
-        return cls(mapping.get('tracks'), mapping.get('albums'), mapping.get('artists'),
-                   mapping.get('playlists'), mapping.get('texts'), mapping.get('plugin'))
-        
 
 class Plugin:
     """
